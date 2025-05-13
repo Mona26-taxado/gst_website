@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Income Calculator | Grahak Sahaayata Kendra</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="img/GSK_Logo.png">
+  <meta name="google" content="notranslate">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <img src="img/GSK_Logo.png" alt="Grahak Sahaayata Kendra Logo" class="logo-img">
+        </a>
+        <div class="nav-center">
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="apply-now.html" class="navbar-btn apply-now-btn">Apply Now</a>
+                <a href="income-calculator.html" class="navbar-btn income-calc-btn">Income Calculator</a>
+                <div class="login-btn">
+                    <a href="https://grahaksahaayatakendra.com/" class="btn">Login</a>
+                </div>
+            </div>
+        </div>
+        <button class="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </nav>
+    <div class="navbar-menu-overlay"></div>
+</header>
+    <!-- Hero Header for Income Calculator -->
+    <section class="hero income-calc-hero">
+      <div class="hero-slider single">
+        <div class="hero-slide active" style="background-image: url('img/About-Us.jpg')">
+          <div class="slide-content" style="align-items: center; text-align: center; max-width: 700px;">
+            <h1 class="hero-title" style="font-size: 3rem; font-weight: 800; letter-spacing: 1px;">Income Calculator</h1>
+            <div class="breadcrumb" style="margin-top: 1.2rem; font-size: 1.15rem; color: #fff; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.25);">
+              <span style="color: #ffd700;">HOME</span> <span style="color: #fff;">/</span> <span style="color: #fff;">INCOME CALCULATOR</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-overlay"></div>
+      <img src="img/shape-two.png" alt="Decorative Shape" class="hero-shape-two">
+    </section>
+  <main class="income-calc-main">
+    <section class="income-calc-section">
+      <div class="income-calc-form">
+        <h2>Income Calculator</h2>
+        <form id="incomeForm" class="income-calc-form">
+          <div class="services-section">
+            <h3>Banking Services</h3>
+            <div class="service-block">
+              <div class="service-title">Aadhaar ATM – AePS</div>
+              <div class="service-subtitle">Avg transaction of ₹3000</div>
+              <input type="number" min="0" value="1" name="aeps" class="service-input-modern">
+            </div>
+            <div class="service-block">
+              <div class="service-title">Money Transfer</div>
+              <div class="service-subtitle">Avg transaction of ₹5000</div>
+              <input type="number" min="0" value="1" name="moneytransfer" class="service-input-modern">
+            </div>
+            <div class="service-block">
+              <div class="service-title">Micro ATM</div>
+              <div class="service-subtitle">Avg transaction of ₹3500</div>
+              <input type="number" min="0" value="1" name="microatm" class="service-input-modern">
+            </div>
+            <div class="service-block">
+              <div class="service-title">Indo Nepal MR</div>
+              <div class="service-subtitle">Avg transaction of ₹10000</div>
+              <input type="number" min="0" value="1" name="indonepal" class="service-input-modern">
+            </div>
+          </div>
+          <div class="services-section">
+            <h3>Travel Services</h3>
+            <div class="service-block">
+              <div class="service-title">Air Ticketing</div>
+              <div class="service-subtitle">Avg transaction of ₹3500</div>
+              <input type="number" min="0" value="1" name="airticket" class="service-input-modern">
+            </div>
+            <div class="service-block">
+              <div class="service-title">IRCTC</div>
+              <div class="service-subtitle">AC: ₹40 per ticket, Non-AC: ₹20 per ticket</div>
+              <div class="irctc-options">
+                <div class="irctc-option">
+                  <label>AC Tickets</label>
+                  <input type="number" min="0" value="1" name="irctc_ac" class="service-input-modern">
+                </div>
+                <div class="irctc-option">
+                  <label>Non-AC Tickets</label>
+                  <input type="number" min="0" value="1" name="irctc_nonac" class="service-input-modern">
+                </div>
+              </div>
+            </div>
+            <div class="service-block">
+              <div class="service-title">Bus Ticketing</div>
+              <div class="service-subtitle">Avg transaction of ₹3500</div>
+              <input type="number" min="0" value="1" name="bus" class="service-input-modern">
+            </div>
+          </div>
+          <div class="services-section">
+            <h3>Utility Services</h3>
+            <div class="service-block">
+              <div class="service-title">Bill Payment</div>
+              <div class="service-subtitle">Avg transaction of ₹3500</div>
+              <input type="number" min="0" value="1" name="billpay" class="service-input-modern">
+            </div>
+            <div class="service-block">
+              <div class="service-title">Mobile & DTH Recharge</div>
+              <div class="service-subtitle">Avg transaction of ₹250</div>
+              <input type="number" min="0" value="1" name="recharge" class="service-input-modern">
+            </div>
+            <div class="service-block">
+              <div class="service-title">LIC Premium Payment</div>
+              <div class="service-subtitle">Avg transaction of ₹2000</div>
+              <input type="number" min="0" value="1" name="lic" class="service-input-modern">
+            </div>
+          </div>
+          <div class="services-section">
+            <h3>Insurance</h3>
+            <div class="service-block">
+              <div class="service-title">Vehicle Insurance</div>
+              <div class="service-subtitle">Avg transaction of ₹1000</div>
+              <input type="number" min="0" value="1" name="vehicleins" class="service-input-modern">
+            </div>
+            <div class="service-block">
+              <div class="service-title">Shop Insurance</div>
+              <div class="service-subtitle">Avg transaction of ₹552</div>
+              <input type="number" min="0" value="1" name="shopins" class="service-input-modern">
+            </div>
+            <div class="service-block">
+              <div class="service-title">Accidental Insurance</div>
+              <div class="service-subtitle">Avg transaction of ₹249</div>
+              <input type="number" min="0" value="1" name="accins" class="service-input-modern">
+            </div>
+          </div>
+          <div class="services-section">
+            <h3>Other Services</h3>
+            <div class="service-block">
+              <div class="service-title">Pan Card</div>
+              <div class="service-subtitle">Avg transaction of ₹72</div>
+              <input type="number" min="0" value="1" name="pancard" class="service-input-modern">
+            </div>
+          </div>
+          <div class="services-section">
+            <h3 class="service-group-title">Certificate Services</h3>
+            <div class="service-block">
+              <div class="service-title">Income Certificate</div>
+              <div class="service-subtitle">Avg transaction of ₹20</div>
+              <input type="number" min="0" value="1" name="incomecert" class="service-input-modern">
+            </div>
+            <div class="service-block">
+              <div class="service-title">Caste Certificate</div>
+              <div class="service-subtitle">Avg transaction of ₹20</div>
+              <input type="number" min="0" value="1" name="castecert" class="service-input-modern">
+            </div>
+            <div class="service-block">
+              <div class="service-title">Domicile Certificate</div>
+              <div class="service-subtitle">Avg transaction of ₹20</div>
+              <input type="number" min="0" value="1" name="domicilecert" class="service-input-modern">
+            </div>
+          </div>
+        </form>
+      </div>
+      <aside class="income-calc-summary">
+        <h3>Income Summary</h3>
+        <ul id="incomeSummaryList">
+          <li>Aadhaar ATM / AePS <span>₹12</span></li>
+          <li>Money Transfer <span>₹15</span></li>
+          <li>Micro ATM <span>₹10</span></li>
+          <li>Indo Nepal IMT <span>₹14</span></li>
+          <li>IRCTC <span>₹20</span></li>
+          <li>Air Ticketing <span>₹75</span></li>
+          <li>Bus Ticketing <span>₹7</span></li>
+          <li>Bill Payment <span>₹5</span></li>
+          <li>Mobile & DTH Recharge <span>₹3</span></li>
+          <li>LIC Premium Payment <span>₹10</span></li>
+          <li>Vehicle Insurance <span>₹180</span></li>
+          <li>Shop Insurance <span>₹152</span></li>
+          <li>Accidental Insurance <span>₹21</span></li>
+          <li>Pan Card <span>₹03</span></li>
+        </ul>
+        <div class="income-calc-total">
+          <div>Income Per Day <span id="incomePerDay">₹1,049</span></div>
+          <div class="income-calc-total-month">
+            <span>Total Income</span>
+            <span id="incomePerMonth" class="income-calc-total-amount">₹31,470</span>
+            <span>Per Month</span>
+          </div>
+        </div>
+      </aside>
+    </section>
+  </main>
+  <footer class="gsk-footer">
+    <div class="gsk-footer-main">
+      <div class="gsk-footer-col gsk-footer-brand">
+        <img src="img/GSK_Logo.png" alt="Grahak Sahaayata Kendra" class="gsk-footer-logo">
+        <p>Empowering citizens with digital services across India. Your trusted center for all government and utility services.</p>
+        <div class="gsk-footer-socials">
+          <a href="https://www.facebook.com/share/16FTSve1Ag/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/grahak_sahaayata_kendra_/profilecard/?igsh=MWh3eHBybms1cXR3cw== " aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="gsk-footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="refund-return-policy.html">Refund & Return Policy</a></li>
+          <li><a href="cancellation-policy.html">Cancellation Policy</a></li>
+        </ul>
+      </div>
+      <div class="gsk-footer-col">
+        <h3>Our Services</h3>
+        <ul>
+          <li><a href="#services">Aadhar Services</a></li>
+          <li><a href="#services">IRCTC Services</a></li>
+          <li><a href="#services">Bill Payments</a></li>
+          <li><a href="#services">Government Services</a></li>
+        </ul>
+      </div>
+      <div class="gsk-footer-col">
+        <h3>Contact Info</h3>
+        <p><i class="fas fa-envelope"></i> care@grahaksahaayatakendra.com</p>
+        <p><i class="fas fa-phone"></i> +91 7991280073</p>
+        <p><i class="fas fa-map-marker-alt"></i> 385 HIGC, Bhagat Choraha Tramandal Gorakhpur Uttar Pradesh - 273001.</p>
+      </div>
+    </div>
+    <div class="gsk-footer-bottom">
+      <p>&copy; 2025 Grahak Sahaayata Kendra. All rights reserved.</p>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+  <button id="scrollToTopBtn" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  <script>
+    // Show/hide button on scroll
+    window.onscroll = function() {
+      var btn = document.getElementById("scrollToTopBtn");
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
+    };
+    // Scroll to top on click
+    document.getElementById("scrollToTopBtn").onclick = function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  </script>
+  <div class="floating-convo">
+    <button id="convoBtn" class="convo-btn" title="Contact Us">
+      <i class="fas fa-comments"></i>
+    </button>
+    <div class="convo-actions" id="convoActions">
+      <a href="https://wa.me/917318147230" target="_blank" class="convo-action whatsapp" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="tel:+917318147230" class="convo-action call" title="Call">
+        <i class="fas fa-phone-alt"></i>
+      </a>
+    </div>
+  </div>
+  <script>
+    document.getElementById('convoBtn').onclick = function(e) {
+      e.preventDefault();
+      document.getElementById('convoActions').classList.toggle('show');
+    };
+    window.addEventListener('click', function(event) {
+      if (!event.target.closest('.floating-convo')) {
+        document.getElementById('convoActions').classList.remove('show');
+      }
+    });
+  </script>
+</body>
+</html> 

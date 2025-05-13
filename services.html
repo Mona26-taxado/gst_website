@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Services - Grahak Sahaayata Kendra</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="google" content="notranslate">
+  <link rel="icon" href="img/GSK_Logo.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body { background: #f8f9fa; }
+    .services-hero {
+      background: linear-gradient(90deg, #ff9800 0%, #ff5722 100%);
+      color: #fff;
+      padding: 3.5rem 0 2.5rem 0;
+      text-align: center;
+      border-radius: 0 0 32px 32px;
+      box-shadow: 0 8px 32px rgba(255,152,0,0.10);
+      margin-bottom: 2.5rem;
+    }
+    .services-hero h1 {
+      font-size: 2.7rem;
+      font-weight: 800;
+      margin-bottom: 0.7rem;
+      letter-spacing: 0.5px;
+    }
+    .services-hero p {
+      font-size: 1.2rem;
+      opacity: 0.95;
+      margin-bottom: 0.5rem;
+    }
+    .services-section {
+      max-width: 1200px;
+      margin: 0 auto 3rem auto;
+      padding: 0 5%;
+    }
+    .services-category {
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .services-category.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .services-category h2 {
+      color: #ff9800;
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .services-category h2 i {
+      font-size: 1.8rem;
+    }
+    .services-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 4px 18px rgba(255,152,0,0.10);
+      padding: 2rem 1.2rem 1.2rem 1.2rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: all 0.3s ease;
+      border: 1.5px solid rgba(255,152,0,0.08);
+      min-height: 210px;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(255,152,0,0.1) 0%, rgba(255,87,34,0.1) 100%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .service-card:hover {
+      box-shadow: 0 12px 32px rgba(255,152,0,0.18);
+      transform: translateY(-8px) scale(1.02);
+      border: 1.5px solid #ff9800;
+    }
+    .service-card:hover::before {
+      opacity: 1;
+    }
+    .service-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+      font-size: 2rem;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(255,152,0,0.13);
+      background: linear-gradient(135deg, #ff9800 0%, #ff5722 100%);
+      position: relative;
+      z-index: 1;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+    .service-card h3 {
+      color: #ff9800;
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+    .service-card p {
+      color: #444;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+    }
+    .learn-more-btn {
+      background: linear-gradient(90deg, #ff9800 0%, #ff5722 100%);
+      color: #fff;
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+    .service-card:hover .learn-more-btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .learn-more-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(255,152,0,0.2);
+    }
+    .search-container {
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      position: relative;
+    }
+    .search-input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      border: 2px solid rgba(255,152,0,0.2);
+      border-radius: 30px;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      background: #fff;
+    }
+    .search-input:focus {
+      outline: none;
+      border-color: #ff9800;
+      box-shadow: 0 0 0 4px rgba(255,152,0,0.1);
+    }
+    .search-input::placeholder {
+      color: #999;
+    }
+    .category-filters {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      justify-content: center;
+    }
+    .category-filter {
+      background: #fff;
+      border: 2px solid rgba(255,152,0,0.2);
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 600;
+      color: #666;
+    }
+    .category-filter:hover, .category-filter.active {
+      background: #ff9800;
+      color: #fff;
+      border-color: #ff9800;
+    }
+    @media (max-width: 900px) {
+      .services-cards {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .services-category h2 {
+        font-size: 1.3rem;
+      }
+      .category-filters {
+        padding: 0 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <img src="img/GSK_Logo.png" alt="Grahak Sahaayata Kendra Logo" class="logo-img">
+            </a>
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="apply-now.html" class="navbar-btn apply-now-btn">Apply Now</a>
+                    <a href="income-calculator.html" class="navbar-btn income-calc-btn">Income Calculator</a>
+                    <div class="login-btn">
+                        <a href="https://grahaksahaayatakendra.com/" class="btn">Login</a>
+                    </div>
+                </div>
+            </div>
+            <button class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </nav>
+        <div class="navbar-menu-overlay"></div>
+    </header>
+    <section class="hero income-calc-hero">
+        <div class="hero-slider single">
+          <div class="hero-slide active" style="background-image: url('img/About-Us.jpg')">
+            <div class="slide-content" style="align-items: center; text-align: center; max-width: 700px;">
+              <h1 class="hero-title" style="font-size: 3rem; font-weight: 800; letter-spacing: 1px;">Our Services</h1>
+              <div class="breadcrumb" style="margin-top: 1.2rem; font-size: 1.15rem; color: #fff; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.25);">
+                <span style="color: #ffd700;">HOME</span> <span style="color: #fff;">/</span> <span style="color: #fff;">SERVICES</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-overlay"></div>
+        <img src="img/shape-two.png" alt="Decorative Shape" class="hero-shape-two">
+      </section>
+  <main class="services-section">
+    <div class="search-container">
+      <input type="text" class="search-input" placeholder="Search for services..." id="serviceSearch">
+    </div>
+    <div class="category-filters">
+      <div class="category-filter active" data-category="all">All Services</div>
+      <div class="category-filter" data-category="gst">GST & Tax</div>
+      <div class="category-filter" data-category="income-tax">Income Tax</div>
+      <div class="category-filter" data-category="company">Company</div>
+      <div class="category-filter" data-category="banking">Banking</div>
+      <div class="category-filter" data-category="insurance">Insurance</div>
+      <div class="category-filter" data-category="bill-payment">Bill Payment</div>
+      <div class="category-filter" data-category="travel">Travel</div>
+      <div class="category-filter" data-category="government">Government</div>
+    </div>
+    <div class="services-category" data-category="gst">
+      <h2><i class="fas fa-file-invoice-dollar"></i> GST & Tax Services</h2>
+      <div class="services-cards">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-file-signature"></i></div>
+          <h3>GSTIN Registration</h3>
+          <p>Get your GST number with professional assistance.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-edit"></i></div>
+          <h3>GSTIN Modification</h3>
+          <p>Update your GST details easily.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+          <h3>GST Return Filing</h3>
+          <p>Monthly/quarterly GST return filing for all types.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-file-excel"></i></div>
+          <h3>E-way Bill</h3>
+          <p>Registration and generation of e-way bills.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-ban"></i></div>
+          <h3>GSTIN Cancellation</h3>
+          <p>Cancel or surrender your GST number.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-balance-scale"></i></div>
+          <h3>GST Audit</h3>
+          <p>Professional GST audit services.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-undo"></i></div>
+          <h3>Revocation of GST Cancellation</h3>
+          <p>Reinstate your cancelled GST number.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-envelope-open-text"></i></div>
+          <h3>Reply to GST Notice</h3>
+          <p>Expert help in replying to GST notices.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="services-category" data-category="income-tax">
+      <h2><i class="fas fa-rupee-sign"></i> Income Tax & Accounting</h2>
+      <div class="services-cards">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-file-invoice"></i></div>
+          <h3>ITR Filing</h3>
+          <p>Income tax return filing for individuals and businesses.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-balance-scale"></i></div>
+          <h3>Tax Audit</h3>
+          <p>Professional tax audit and compliance services.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-clipboard-list"></i></div>
+          <h3>Accounting Services</h3>
+          <p>Monthly/yearly accounting and bookkeeping.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-file-contract"></i></div>
+          <h3>TDS Returns</h3>
+          <p>Filing of TDS returns and compliance.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-id-card"></i></div>
+          <h3>PAN Card Services</h3>
+          <p>New, correction, and duplicate PAN card applications.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="services-category" data-category="company">
+      <h2><i class="fas fa-building"></i> Company & Business Services</h2>
+      <div class="services-cards">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-briefcase"></i></div>
+          <h3>Company Formation</h3>
+          <p>Private Limited, LLP, OPC, Nidhi, and more.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-certificate"></i></div>
+          <h3>Udyam & FSSAI Registration</h3>
+          <p>Get your business registered and certified.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-user-shield"></i></div>
+          <h3>Digital Signature (DSC)</h3>
+          <p>Class 3, DGFT, and more.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-user-tie"></i></div>
+          <h3>CA Certification</h3>
+          <p>Chartered Accountant certification of documents.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="services-category" data-category="banking">
+      <h2><i class="fas fa-university"></i> Banking & Financial Services</h2>
+      <div class="services-cards">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-credit-card"></i></div>
+          <h3>Credit Card</h3>
+          <p>Apply for new credit cards.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-money-check-alt"></i></div>
+          <h3>Loans</h3>
+          <p>Personal, business, housing, MSME, and more.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-piggy-bank"></i></div>
+          <h3>Micro ATM</h3>
+          <p>Cash withdrawal, deposit, and AEPS services.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="services-category" data-category="insurance">
+      <h2><i class="fas fa-shield-alt"></i> Insurance Services</h2>
+      <div class="services-cards">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
+          <h3>Health Insurance</h3>
+          <p>Comprehensive health insurance plans.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-car"></i></div>
+          <h3>Vehicle Insurance</h3>
+          <p>Motor, commercial, and personal vehicle insurance.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-plane"></i></div>
+          <h3>Travel Insurance</h3>
+          <p>Travel and trip insurance plans.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-user-friends"></i></div>
+          <h3>Group & Life Insurance</h3>
+          <p>Group term, life, and personal accident insurance.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="services-category" data-category="bill-payment">
+      <h2><i class="fas fa-bolt"></i> Bill Payment & Recharge</h2>
+      <div class="services-cards">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+          <h3>Mobile & DTH Recharge</h3>
+          <p>Prepaid, DTH, and data card recharge.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-file-invoice"></i></div>
+          <h3>Utility Bill Payment</h3>
+          <p>Electricity, water, gas, landline, internet, and more.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-umbrella"></i></div>
+          <h3>Insurance Premium Payment</h3>
+          <p>Pay your insurance premiums easily.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="services-category" data-category="travel">
+      <h2><i class="fas fa-plane-departure"></i> Travel & Ticketing</h2>
+      <div class="services-cards">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-train"></i></div>
+          <h3>IRCTC Railway Tickets</h3>
+          <p>Book train tickets (IRCTC license fees may apply).</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-bus"></i></div>
+          <h3>Bus Tickets</h3>
+          <p>Book bus tickets for all major routes.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-hotel"></i></div>
+          <h3>Hotel Bookings</h3>
+          <p>Book hotels and holiday packages.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-plane"></i></div>
+          <h3>Flight Tickets</h3>
+          <p>Book domestic and international flights.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div class="services-category" data-category="government">
+      <h2><i class="fas fa-id-badge"></i> Government to Citizen Services</h2>
+      <div class="services-cards">
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-vote-yea"></i></div>
+          <h3>Voter ID</h3>
+          <p>Apply for new or correction in Voter ID.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-id-card"></i></div>
+          <h3>Aadhaar Services</h3>
+          <p>New Aadhaar, update, and correction.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-car"></i></div>
+          <h3>Driving License</h3>
+          <p>Apply for new or renewal of driving license.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-address-card"></i></div>
+          <h3>PAN Card</h3>
+          <p>New, correction, and duplicate PAN card.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-certificate"></i></div>
+          <h3>Birth/Death Certificate</h3>
+          <p>Apply for birth and death certificates.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><i class="fas fa-certificate"></i></div>
+          <h3>Caste/Income/Domicile Certificate</h3>
+          <p>Apply for state-level certificates.</p>
+          <a href="#" class="learn-more-btn">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="gsk-footer">
+    <div class="gsk-footer-main">
+      <div class="gsk-footer-col gsk-footer-brand">
+        <img src="img/GSK_Logo.png" alt="Grahak Sahaayata Kendra" class="gsk-footer-logo">
+        <p>Empowering citizens with digital services across India. Your trusted center for all government and utility services.</p>
+        <div class="gsk-footer-socials">
+          <a href="https://www.facebook.com/share/16FTSve1Ag/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/grahak_sahaayata_kendra_/profilecard/?igsh=MWh3eHBybms1cXR3cw== " aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="gsk-footer-col">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="privacy-policy.html">Privacy Policy</a></li>
+          <li><a href="refund-return-policy.html">Refund & Return Policy</a></li>
+          <li><a href="cancellation-policy.html">Cancellation Policy</a></li>
+        </ul>
+      </div>
+      <div class="gsk-footer-col">
+        <h3>Our Services</h3>
+        <ul>
+          <li><a href="index.html#services">Aadhar Services</a></li>
+          <li><a href="index.html#services">IRCTC Services</a></li>
+          <li><a href="index.html#services">Bill Payments</a></li>
+          <li><a href="index.html#services">Government Services</a></li>
+        </ul>
+      </div>
+      <div class="gsk-footer-col">
+        <h3>Contact Info</h3>
+        <p><i class="fas fa-envelope"></i> care@grahaksahaayatakendra.com</p>
+        <p><i class="fas fa-phone"></i> +91 7991280073</p>
+        <p><i class="fas fa-map-marker-alt"></i> 385 HIGC, Bhagat Choraha Tramandal Gorakhpur Uttar Pradesh - 273001.</p>
+      </div>
+    </div>
+    <div class="gsk-footer-bottom">
+      <p>&copy; 2025 Grahak Sahaayata Kendra. All rights reserved.</p>
+    </div>
+  </footer>
+  <button id="scrollToTopBtn" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  <script>
+    // Show/hide button on scroll
+    window.onscroll = function() {
+      var btn = document.getElementById("scrollToTopBtn");
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
+    };
+    // Scroll to top on click
+    document.getElementById("scrollToTopBtn").onclick = function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  </script>
+  <script src="script.js"></script>
+  <div class="floating-convo">
+    <button id="convoBtn" class="convo-btn" title="Contact Us">
+      <i class="fas fa-comments"></i>
+    </button>
+    <div class="convo-actions" id="convoActions">
+      <a href="https://wa.me/917318147230" target="_blank" class="convo-action whatsapp" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="tel:+917318147230" class="convo-action call" title="Call">
+        <i class="fas fa-phone-alt"></i>
+      </a>
+    </div>
+  </div>
+  <script>
+    document.getElementById('convoBtn').onclick = function(e) {
+      e.preventDefault();
+      document.getElementById('convoActions').classList.toggle('show');
+    };
+    window.addEventListener('click', function(event) {
+      if (!event.target.closest('.floating-convo')) {
+        document.getElementById('convoActions').classList.remove('show');
+      }
+    });
+  </script>
+  <script>
+    // Intersection Observer for fade-in animation
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.services-category').forEach(category => {
+      observer.observe(category);
+    });
+
+    // Search functionality
+    const searchInput = document.getElementById('serviceSearch');
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      serviceCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+        const isVisible = title.includes(searchTerm) || description.includes(searchTerm);
+        card.style.display = isVisible ? 'flex' : 'none';
+      });
+    });
+
+    // Category filter functionality
+    const categoryFilters = document.querySelectorAll('.category-filter');
+    const serviceCategories = document.querySelectorAll('.services-category');
+
+    categoryFilters.forEach(filter => {
+      filter.addEventListener('click', () => {
+        // Update active state
+        categoryFilters.forEach(f => f.classList.remove('active'));
+        filter.classList.add('active');
+
+        const selectedCategory = filter.dataset.category;
+        
+        serviceCategories.forEach(category => {
+          if (selectedCategory === 'all' || category.dataset.category === selectedCategory) {
+            category.style.display = 'block';
+          } else {
+            category.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Add hover effect to service cards
+    serviceCards.forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        card.style.transform = 'translateY(-8px) scale(1.02)';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'translateY(0) scale(1)';
+      });
+    });
+  </script>
+</body>
+</html> 

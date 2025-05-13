@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Now - Grahak Sahaayata Kendra</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="img/GSK_Logo.png" type="image/png">
+    <meta name="google" content="notranslate">
+</head>
+<body>
+     <!-- Header -->
+     <header>
+        <nav class="navbar">
+            <a href="#" class="logo">
+                <img src="img/GSK_Logo.png" alt="Grahak Sahaayata Kendra Logo" class="logo-img">
+            </a>
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-buttons">
+                    <a href="apply-now.html" class="navbar-btn apply-now-btn">Apply Now</a>
+                    <a href="income-calculator.html" class="navbar-btn income-calc-btn">Income Calculator</a>
+                    <div class="login-btn">
+                        <a href="https://grahaksahaayatakendra.com/" class="btn">Login</a>
+                    </div>
+                </div>
+            </div>
+            <button class="hamburger" type="button">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </nav>
+        <div class="navbar-menu-overlay"></div>
+    </header>
+    <section class="hero income-calc-hero">
+        <div class="hero-slider single">
+          <div class="hero-slide active" style="background-image: url('img/About-Us.jpg')">
+            <div class="slide-content" style="align-items: center; text-align: center; max-width: 700px;">
+              <h1 class="hero-title" style="font-size: 3rem; font-weight: 800; letter-spacing: 1px;">Apply Now</h1>
+              <div class="breadcrumb" style="margin-top: 1.2rem; font-size: 1.15rem; color: #fff; font-weight: 600; text-shadow: 0 2px 8px rgba(0,0,0,0.25);">
+                <span style="color: #ffd700;">HOME</span> <span style="color: #fff;">/</span> <span style="color: #fff;">APPLY NOW</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-overlay"></div>
+        <img src="img/shape-two.png" alt="Decorative Shape" class="hero-shape-two">
+      </section>
+    <!-- Apply Now Form Section -->
+    <section class="apply-now-section">
+        <div class="apply-now-container">
+            <h1>Apply Now</h1>
+            <p class="form-subtitle">Join our network of digital service providers</p>
+            
+            <form id="applyForm" action="send-email.php" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="fullName">Full Name *</label>
+                    <input type="text" id="fullName" name="fullName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobileNumber">Mobile Number *</label>
+                    <input type="tel" id="mobileNumber" name="mobileNumber" pattern="[0-9]{10}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Address *</label>
+                    <textarea id="address" name="address" rows="3" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="interestType">Interested In *</label>
+                    <select id="interestType" name="interestType" required>
+                        <option value="">Select Option</option>
+                        <option value="retailer">Retailer</option>
+                        <option value="distributor">Distributor</option>
+                        <option value="masterDistributor">Master Distributor</option>
+                        <option value="whiteLabel">White Label</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="aadharFront">Aadhar Card (Front) *</label>
+                    <input type="file" id="aadharFront" name="aadharFront" accept="image/*,application/pdf" required>
+                </div>
+                <div class="form-group">
+                    <label for="aadharBack">Aadhar Card (Back) *</label>
+                    <input type="file" id="aadharBack" name="aadharBack" accept="image/*,application/pdf" required>
+                </div>
+                <div class="form-group">
+                    <label for="panCard">PAN Card *</label>
+                    <input type="file" id="panCard" name="panCard" accept="image/*,application/pdf" required>
+                </div>
+
+                <div class="form-group terms-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the <a href="#" class="terms-link">Terms and Conditions</a> *</label>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="submit-btn">Submit Application</button>
+                </div>
+            </form>
+            <div id="formMessage" class="form-message" style="display: none;"></div>
+        </div>
+    </section>
+
+    <footer class="gsk-footer">
+        <div class="gsk-footer-main">
+          <div class="gsk-footer-col gsk-footer-brand">
+            <img src="img/GSK_Logo.png" alt="Grahak Sahaayata Kendra" class="gsk-footer-logo">
+            <p>Empowering citizens with digital services across India. Your trusted center for all government and utility services.</p>
+            <div class="gsk-footer-socials">
+              <a href="https://www.facebook.com/share/16FTSve1Ag/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/grahak_sahaayata_kendra_/profilecard/?igsh=MWh3eHBybms1cXR3cw== " aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+          <div class="gsk-footer-col">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">About</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="privacy-policy.html">Privacy Policy</a></li>
+              <li><a href="refund-return-policy.html">Refund & Return Policy</a></li>
+              <li><a href="cancellation-policy.html">Cancellation Policy</a></li>
+            </ul>
+          </div>
+          <div class="gsk-footer-col">
+            <h3>Our Services</h3>
+            <ul>
+              <li><a href="#services">Aadhar Services</a></li>
+              <li><a href="#services">IRCTC Services</a></li>
+              <li><a href="#services">Bill Payments</a></li>
+              <li><a href="#services">Government Services</a></li>
+            </ul>
+          </div>
+          <div class="gsk-footer-col">
+            <h3>Contact Info</h3>
+            <p><i class="fas fa-envelope"></i> care@grahaksahaayatakendra.com</p>
+            <p><i class="fas fa-phone"></i> +91 7991280073</p>
+            <p><i class="fas fa-map-marker-alt"></i> 385 HIGC, Bhagat Choraha Tramandal Gorakhpur Uttar Pradesh - 273001.</p>
+          </div>
+        </div>
+        <div class="gsk-footer-bottom">
+          <p>&copy; 2025 Grahak Sahaayata Kendra. All rights reserved.</p>
+        </div>
+      </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Application Submitted Successfully!</h2>
+            </div>
+            <div class="modal-body">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <p class="success-message">Thank you for submitting your application!</p>
+                <div class="application-details">
+                    <p>Our executive will contact you within 2 hours.</p>
+                    <p>For immediate assistance, call us at: <a href="tel:+917318147230">+91 7318147230</a></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button onclick="closeModal()" class="modal-close-btn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: #fff;
+            margin: 3% auto;
+            padding: 0;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .modal-header {
+            padding: 20px;
+            background: linear-gradient(135deg, #0066cc, #00c6ff);
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.5em;
+            text-align: center;
+        }
+
+        .modal-body {
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .success-icon {
+            font-size: 4em;
+            color: #27ae60;
+            margin-bottom: 20px;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        .success-message {
+            font-size: 1.2em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .application-details {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .application-details p {
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .application-details a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .modal-footer {
+            padding: 15px;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+
+        .modal-close-btn {
+            background: linear-gradient(135deg, #0066cc, #00c6ff);
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .modal-close-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        @keyframes scaleIn {
+            from { transform: scale(0); }
+            to { transform: scale(1); }
+        }
+    </style>
+
+<button id="scrollToTopBtn" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  <script>
+    // Show/hide button on scroll
+    window.onscroll = function() {
+      var btn = document.getElementById("scrollToTopBtn");
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
+    };
+    // Scroll to top on click
+    document.getElementById("scrollToTopBtn").onclick = function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+  </script>
+  <script src="script.js"></script>
+  <div class="floating-convo">
+    <button id="convoBtn" class="convo-btn" title="Contact Us">
+      <i class="fas fa-comments"></i>
+    </button>
+    <div class="convo-actions" id="convoActions">
+      <a href="https://wa.me/917318147230" target="_blank" class="convo-action whatsapp" title="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="tel:+917318147230" class="convo-action call" title="Call">
+        <i class="fas fa-phone-alt"></i>
+      </a>
+    </div>
+  </div>
+  <script>
+    document.getElementById('convoBtn').onclick = function(e) {
+      e.preventDefault();
+      document.getElementById('convoActions').classList.toggle('show');
+    };
+    window.addEventListener('click', function(event) {
+      if (!event.target.closest('.floating-convo')) {
+        document.getElementById('convoActions').classList.remove('show');
+      }
+    });
+  </script>
+    <script>
+        function showModal() {
+            document.getElementById('successModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        document.getElementById('applyForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const submitBtn = this.querySelector('.submit-btn');
+            const messageDiv = document.getElementById('formMessage');
+            
+            // Disable submit button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            fetch('send-email.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                messageDiv.style.display = 'block';
+                if (data.success) {
+                    messageDiv.className = 'form-message success';
+                    messageDiv.textContent = data.message;
+                    document.getElementById('applyForm').reset();
+                    showModal();
+                } else {
+                    messageDiv.className = 'form-message error';
+                    messageDiv.textContent = data.message;
+                }
+            })
+            .catch(error => {
+                messageDiv.style.display = 'block';
+                messageDiv.className = 'form-message error';
+                messageDiv.textContent = 'An error occurred. Please try again later.';
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Application';
+            });
+        });
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('successModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html> 
