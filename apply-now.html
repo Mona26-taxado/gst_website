@@ -27,7 +27,7 @@
                     <a href="apply-now.html" class="navbar-btn apply-now-btn">Apply Now</a>
                     <a href="income-calculator.html" class="navbar-btn income-calc-btn">Income Calculator</a>
                     <div class="login-btn">
-                        <a href="https://grahaksahaayatakendra.com/" class="btn">Login</a>
+                        <a href="https://crm.grahaksahaayatakendra.com/" class="btn">Login</a>
                     </div>
                 </div>
             </div>
@@ -59,7 +59,8 @@
             <h1>Apply Now</h1>
             <p class="form-subtitle">Join our network of digital service providers</p>
             
-            <form id="applyForm" action="send-email.php" method="POST" enctype="multipart/form-data">
+            <div id="formAlert" style="display:none; margin-bottom: 16px; padding: 12px; border-radius: 6px; font-weight: 600;"></div>
+            <form id="applyForm" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="fullName">Full Name *</label>
                     <input type="text" id="fullName" name="fullName" required>
@@ -113,7 +114,6 @@
                     <button type="submit" class="submit-btn">Submit Application</button>
                 </div>
             </form>
-            <div id="formMessage" class="form-message" style="display: none;"></div>
         </div>
     </section>
 
@@ -160,26 +160,20 @@
         </div>
       </footer>
 
-    <!-- Success Modal -->
-    <div id="successModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Application Submitted Successfully!</h2>
-            </div>
-            <div class="modal-body">
-                <div class="success-icon">
-                    <i class="fas fa-check-circle"></i>
-                </div>
-                <p class="success-message">Thank you for submitting your application!</p>
-                <div class="application-details">
-                    <p>Our executive will contact you within 2 hours.</p>
-                    <p>For immediate assistance, call us at: <a href="tel:+917318147230">+91 7318147230</a></p>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button onclick="closeModal()" class="modal-close-btn">Close</button>
-            </div>
+    <!-- Success Card Overlay -->
+    <div id="successCardOverlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:linear-gradient(135deg,#7fd7fa 0%,#b7aaff 100%); z-index:9999; align-items:center; justify-content:center;">
+      <div style="background:#fff; border-radius:18px; max-width:480px; margin:auto; padding:40px 32px 32px 32px; box-shadow:0 8px 32px rgba(76,175,80,0.10); text-align:center; position:relative;">
+        <img src="https://cdn-icons-png.flaticon.com/512/5610/5610944.png" alt="Success" style="width:80px; margin-bottom:18px;">
+        <h2 style="margin:0 0 12px 0; color:#3b3b7a;">Thank you for getting in touch!</h2>
+        <div style="color:#444; font-size:1.1rem; margin-bottom:18px;">
+          Your message has been received, and our team will be in touch with you shortly.<br>
+          In the meantime, feel free to explore our FAQ section or <a href="#" style="color:#3b3b7a; text-decoration:underline;">learn more</a> about our services.
         </div>
+        <div style="display:flex; gap:12px; justify-content:center;">
+          <a href="index.html" style="background:#ffd166; color:#222; border:none; border-radius:6px; padding:10px 24px; font-size:1rem; text-decoration:none; font-weight:600;">&#8594; Back to Website </a>
+          <button onclick="closeSuccessCard()" style="background:#ffd166; color:#222; border:none; border-radius:6px; padding:10px 24px; font-size:1rem; font-weight:600; cursor:pointer;">Fill again</button>
+        </div>
+      </div>
     </div>
 
     <style>
@@ -338,62 +332,56 @@
     });
   </script>
     <script>
-        function showModal() {
-            document.getElementById('successModal').style.display = 'block';
+        function showSuccessCardOverlay() {
+            document.getElementById('successCardOverlay').style.display = 'flex';
             document.body.style.overflow = 'hidden';
         }
 
-        function closeModal() {
-            document.getElementById('successModal').style.display = 'none';
-            document.body.style.overflow = 'auto';
+        function closeSuccessCard() {
+            document.getElementById('successCardOverlay').style.display = 'none';
+            document.body.style.overflow = '';
         }
 
-        document.getElementById('applyForm').addEventListener('submit', function(e) {
+        document.getElementById('applyForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
-            const formData = new FormData(this);
-            const submitBtn = this.querySelector('.submit-btn');
-            const messageDiv = document.getElementById('formMessage');
-            
-            // Disable submit button and show loading state
+
+            const form = this;
+            const formAlert = document.getElementById('formAlert');
+            const submitBtn = form.querySelector('.submit-btn');
+
+            function showAlert(message, type = 'success') {
+                formAlert.style.display = 'block';
+                formAlert.style.background = type === 'success' ? '#e8f5e9' : '#ffebee';
+                formAlert.style.color = type === 'success' ? '#388e3c' : '#c62828';
+                formAlert.style.border = type === 'success' ? '1px solid #388e3c' : '1px solid #c62828';
+                formAlert.textContent = message;
+                setTimeout(() => { formAlert.style.display = 'none'; }, 5000);
+            }
+
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
-            
-            fetch('send-email.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                messageDiv.style.display = 'block';
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch('http://localhost:3000/submit-application', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+
                 if (data.success) {
-                    messageDiv.className = 'form-message success';
-                    messageDiv.textContent = data.message;
-                    document.getElementById('applyForm').reset();
-                    showModal();
+                    showSuccessCardOverlay();
+                    form.reset();
                 } else {
-                    messageDiv.className = 'form-message error';
-                    messageDiv.textContent = data.message;
+                    showAlert(data.message || 'Submission failed. Please try again.', 'error');
                 }
-            })
-            .catch(error => {
-                messageDiv.style.display = 'block';
-                messageDiv.className = 'form-message error';
-                messageDiv.textContent = 'An error occurred. Please try again later.';
-            })
-            .finally(() => {
+            } catch (err) {
+                showAlert('An error occurred. Please try again later.', 'error');
+            } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit Application';
-            });
-        });
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('successModal');
-            if (event.target == modal) {
-                closeModal();
             }
-        }
+        });
     </script>
 </body>
 </html> 

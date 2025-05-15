@@ -1297,14 +1297,12 @@ footer {
     display: inline-block;
     background: linear-gradient(135deg, #ff9800, #ff5722);
     color: #fff;
-    padding: 0rem
-0px
- 1.5rem;
+    padding: 0rem 0px 0.3rem;
     border-radius: 50px;
     font-size: 1.2rem;
     font-weight: 600;
     text-decoration: none;
-    margin-top: 3rem;
+    margin-top: 1rem;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);
     position: relative;
